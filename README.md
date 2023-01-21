@@ -9,3 +9,6 @@ $ git clone git@github.com:nasumilu/issue-trac-web.git
 $ cd issue-web-trac
 $ ng serve --open
 ```
+
+
+[Back to IssueTrac Project](https://github.com/nasumilu/issue-trac)
