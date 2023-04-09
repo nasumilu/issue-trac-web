@@ -1,0 +1,7 @@
+<div class="ol-geocode-control">
+  <div class="form-floating mb-1">
+    <input type="text" #address class="form-control" id="floatingInput" placeholder="1234 N. Main St, Smallville, TX 75025">
+    <label for="floatingInput">Street Address</label>
+  </div>
+  <button type="submit" class="btn btn-secondary" (click)="locate(address.value)">Locate</button>
+</div>

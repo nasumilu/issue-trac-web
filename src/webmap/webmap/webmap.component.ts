@@ -1,34 +1,77 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
-import {Map, View} from 'ol';
-import TileLayer from "ol/layer/Tile";
-import {OSM} from "ol/source";
+import {
+  AfterContentInit,
+  AfterViewInit,
+  Component,
+  ContentChild,
+  ElementRef,
+  Input,
+} from '@angular/core';
+import {ProjectionLike, transform} from "ol/proj";
+import {Map, View} from "ol";
+import {Coordinate} from "ol/coordinate";
+import {LayersDirective} from "../layers/layers.directive";
+import {OverlaysDirective} from "../overlays/overlays.directive";
+import {ControlsDirective} from "../controls/controls.directive";
 
 @Component({
   selector: 'webmap',
   templateUrl: './webmap.component.html',
   styleUrls: ['./webmap.component.css']
 })
-export class WebmapComponent implements OnInit {
+export class WebmapComponent extends Map implements AfterContentInit, AfterViewInit {
 
-  #map!: Map;
+  @ContentChild('map', {read: ElementRef}) mapContainer!: ElementRef;
+  @ContentChild(LayersDirective) _layers?: LayersDirective;
+  @ContentChild(OverlaysDirective) _overlays?: OverlaysDirective;
+  @ContentChild(ControlsDirective) _controls?: ControlsDirective;
 
-  constructor(private readonly ele: ElementRef) { }
-
-  ngOnInit(): void {
-    this.#map = new Map({
-      target: this.ele.nativeElement.querySelector('.webmap'),
-      layers: [
-        new TileLayer({
-          source: new OSM(),
-        }),
-      ],
+  constructor(private readonly ele: ElementRef) {
+    super({
       view: new View({
-        center: [0, 0],
-        zoom: 2,
-      }),
+        center: [0,0],
+        zoom: 5
+      })
     });
+  }
 
-    this.#map.on('click', event => console.log(event));
+  @Input() get projection() {
+    return this.getView().getProjection();
+  }
+
+  set projection(value: ProjectionLike) {
+    this.setView(new View({
+      projection: value,
+      center: this.center ? transform(this.center, this.projection, value) : undefined,
+      zoom: this.zoom
+    }));
+  }
+
+  @Input() get zoom(): number {
+    return this.getView().getZoom() ?? Number.NaN;
+  }
+
+  set zoom(value: number) {
+    this.getView().setZoom(value);
+  }
+
+  @Input() get center(){
+    return this.getView().getCenter();
+  }
+
+  set center(value: Coordinate | undefined) {
+    this.getView().setCenter(value);
+  }
+
+  ngAfterContentInit() {
+    this._layers?.layers.forEach(layer => this.addLayer(layer));
+    this._overlays?.overlays.forEach(overlay => this.addOverlay(overlay));
+    if (this._controls) {
+      this._controls.map = this;
+    }
+  }
+
+  ngAfterViewInit(): void {
+    this.setTarget(this.ele.nativeElement);
   }
 
 }

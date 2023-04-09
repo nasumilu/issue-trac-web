@@ -10,5 +10,11 @@ $ cd issue-web-trac
 $ ng serve --open
 ```
 
+## Wireframes
+
+![Desktop Wireframe](docs/images/wireframe-desktop.png)
+
+![Mobile Wireframe](docs/images/wireframe-mobile.png)
+
 
 [Back to IssueTrac Project](https://github.com/nasumilu/issue-trac)

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WebmapComponent } from './webmap.component';
+import { GeocodeComponent } from './geocode.component';
 
-describe('WebmapComponent', () => {
-  let component: WebmapComponent;
-  let fixture: ComponentFixture<WebmapComponent>;
+describe('GeocodeControlComponent', () => {
+  let component: GeocodeComponent;
+  let fixture: ComponentFixture<GeocodeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WebmapComponent ]
+      declarations: [ GeocodeComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(WebmapComponent);
+    fixture = TestBed.createComponent(GeocodeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
