@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import {WebmapModule} from "../webmap/webmap.module";
 import {PopupModule} from "../popup/popup.module";
 import {GeocoderModule} from "../geocoder/geocoder.module";
+import {AccountsModule} from "../accounts/accounts.module";
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import {GeocoderModule} from "../geocoder/geocoder.module";
         BrowserModule,
         WebmapModule,
         PopupModule,
-        GeocoderModule
+        GeocoderModule,
+        AccountsModule
     ],
   providers: [],
   bootstrap: [AppComponent]
