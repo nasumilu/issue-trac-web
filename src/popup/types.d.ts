@@ -9,6 +9,7 @@ export interface PopupService {
 export interface PopupProvider {
 
   title: string;
+  coordinate?: Coordinate;
 }
 
 

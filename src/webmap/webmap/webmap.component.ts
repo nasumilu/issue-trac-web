@@ -12,6 +12,7 @@ import {Coordinate} from "ol/coordinate";
 import {LayersDirective} from "../layers/layers.directive";
 import {OverlaysDirective} from "../overlays/overlays.directive";
 import {ControlsDirective} from "../controls/controls.directive";
+import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'webmap',
@@ -28,8 +29,9 @@ export class WebmapComponent extends Map implements AfterContentInit, AfterViewI
   constructor(private readonly ele: ElementRef) {
     super({
       view: new View({
-        center: [0,0],
-        zoom: 5
+        center: environment.map.center,
+        zoom: environment.map.zoom,
+        projection: environment.map.projection
       })
     });
   }
