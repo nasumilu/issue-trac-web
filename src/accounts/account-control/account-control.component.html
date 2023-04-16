@@ -1,9 +1,9 @@
 <div>
   <p>Account</p>
-  <ng-container *ngIf="account$ | async as user">
+  <ng-container *ngIf="userinfo$ | async as user">
     {{ user.email}}
-    {{ user.email_verified }}
+    {{ user.verified }}
     {{ user.name }}
-    {{ user.sub }}
+    {{ user.uuid }}
   </ng-container>
 </div>

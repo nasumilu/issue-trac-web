@@ -13,5 +13,5 @@ export interface GeocoderAdapter extends NamedAdapter{
 }
 
 export interface ReverseGeocoderAdapter extends NamedAdapter{
-  reverseGeocode(coordinate: Coordinate, projection: ProjectionLike): Observable<any[]>;
+  reverseGeocode(coordinate: Coordinate, projection: ProjectionLike): Observable<Feature<Point>>;
 }

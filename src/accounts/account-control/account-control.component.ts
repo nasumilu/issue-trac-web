@@ -2,9 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {ControlComponent} from "../../webmap/types";
 import {Map} from "ol";
 import {MAP_CONTROL} from "../../webmap/controls/controls.directive";
-import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {environment} from "../../environments/environment";
+import {AccountService} from "../account.service";
+import {UserInfo} from "../types";
 
 @Component({
   selector: 'account-control',
@@ -15,13 +15,13 @@ import {environment} from "../../environments/environment";
 })
 export class AccountControlComponent implements OnInit, ControlComponent {
 
-  readonly account$: Observable<any>
-
-  constructor(private readonly client: HttpClient) {
-    this.account$ = this.client.get(environment.services.account);
-  }
+  constructor(private readonly accountService: AccountService) { }
 
   ngOnInit(): void {
+  }
+
+  get userinfo$(): Observable<UserInfo> {
+    return this.accountService.userinfo$;
   }
 
   element: HTMLElement | undefined;
