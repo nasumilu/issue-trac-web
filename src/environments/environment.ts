@@ -3,7 +3,18 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  map: {
+    center: [-11209356.066861978, 4764718.121160403],
+    zoom: 5,
+    projection: 'EPSG:3857'
+  },
+  geocoder: 'nasumilu',
+  services: {
+    geocode: 'https://localhost:8000/services',
+    account: 'https://nasumilu.io/auth/token?info=json'
+  }
+
 };
 
 /*

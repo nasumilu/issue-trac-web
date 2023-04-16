@@ -7,13 +7,14 @@ import {HttpClient, HttpParams} from "@angular/common/http";
 import {map, Observable, of, switchMap} from "rxjs";
 import {ProjectionLike, transform} from "ol/proj";
 import {GeoJSON} from "ol/format";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class NasumiluService implements GeocoderAdapter, ReverseGeocoderAdapter {
 
-  readonly #baseURI = 'https://localhost:8001/api'
+  readonly #baseURI = environment.services.geocode
   readonly #geocoder$ = of(this.#baseURI);
   readonly #serviceProjection: ProjectionLike;
   readonly #format = new GeoJSON();

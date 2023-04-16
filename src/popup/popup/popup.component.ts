@@ -1,4 +1,4 @@
-import {Component, Inject, Input, Type, ViewChild, ViewContainerRef} from '@angular/core';
+import {Component, Inject, Type, ViewChild, ViewContainerRef} from '@angular/core';
 import {PopupBodyDirective} from "./popup-body.directive";
 import {PopupProvider} from "../types";
 import {POPUP_PROVIDER} from "../popup-overlay.directive";
@@ -11,7 +11,6 @@ import {Coordinate} from "ol/coordinate";
 })
 export class PopupComponent {
 
-  @Input() title: string = '';
   @ViewChild(PopupBodyDirective, {read: ViewContainerRef}) contentViewContainerRef!: ViewContainerRef;
 
   constructor(@Inject(POPUP_PROVIDER) private readonly popupProviders: Type<PopupProvider>[]) { }
@@ -21,7 +20,7 @@ export class PopupComponent {
       const content = this.contentViewContainerRef.createComponent(provider);
       content.changeDetectorRef.detectChanges();
       const element = content.instance;
-      this.title = element.title;
+      element.coordinate = coordinate;
     });
   }
 
@@ -40,13 +39,6 @@ export class PopupComponent {
       this.#closer();
     }
   }
-
-  /*setContent(content: Type<PopupContent>): string {
-    console.log(this.contentViewContainerRef);
-    const element = this.contentViewContainerRef.createComponent(content);
-    // element.changeDetectorRef.detectChanges();
-    return element.instance.title;
-  }*/
 
   clear() {
     this.contentViewContainerRef.clear();

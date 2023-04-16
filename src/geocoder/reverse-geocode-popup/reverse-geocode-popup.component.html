@@ -1,1 +1,10 @@
+<div *ngIf="location$ | async as location; else spinner">
+  <address><strong>{{ location.properties.address }}</strong></address>
+  <small class="text-muted">lat: {{ location.geometry.coordinates[1].toFixed(6) }}, lng: {{ location .geometry.coordinates[0].toFixed(6) }}</small>
+</div>
 
+<ng-template #spinner>
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</ng-template>
