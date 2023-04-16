@@ -14,7 +14,6 @@ export const environment = {
     geocode: 'https://localhost:8000/services',
     account: 'https://nasumilu.io/auth/token?info=json'
   }
-
 };
 
 /*
