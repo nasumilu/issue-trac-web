@@ -34,10 +34,12 @@ export class PopupComponent {
     return this.#closer;
   }
 
-  close(): void {
+  close(event: Event): void {
     if (this.#closer) {
       this.#closer();
     }
+    event.stopImmediatePropagation();
+    event.preventDefault();
   }
 
   clear() {
