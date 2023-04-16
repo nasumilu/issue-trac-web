@@ -35,11 +35,12 @@ export class NasumiluService implements GeocoderAdapter, ReverseGeocoderAdapter 
     return 'nasumilu';
   }
 
-  reverseGeocode(coordinate: Coordinate, projection: ProjectionLike): Observable<any[]> {
+  reverseGeocode(coordinate: Coordinate, projection: ProjectionLike): Observable<Feature<Point>> {
     coordinate = transform(coordinate, projection, this.#serviceProjection);
     const params = new HttpParams({ fromObject: {lng: coordinate[0], lat: coordinate[1]} });
     return this.#geocoder$.pipe(
-      switchMap(url => this.client.get<any[]>(`${url}/reverse-geocode`, {responseType: 'json', params}))
+      switchMap(url => this.client.get(`${url}/reverse-geocode`, {responseType: 'json', params})),
+      map(response => this.#format.readFeature(response, {featureProjection: this.#serviceProjection}) as Feature<Point>)
     );
   }
 }

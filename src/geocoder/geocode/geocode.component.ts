@@ -1,4 +1,4 @@
-import {AfterContentInit, AfterViewInit, Component, ElementRef, Input, OnInit} from '@angular/core';
+import {AfterContentInit, AfterViewInit, Component, ElementRef, OnInit} from '@angular/core';
 import {MAP_CONTROL} from "../../webmap/controls/controls.directive";
 import {GeocoderService} from "../geocoder.service";
 import {ControlComponent} from "../../webmap/types";
@@ -18,7 +18,6 @@ export class GeocodeComponent implements ControlComponent, OnInit, AfterViewInit
   readonly #featureCollection: Collection<Feature>;
   readonly #source: VectorSource;
   #map: Map |  null = null;
-  @Input() adapter = 'nasumilu';
 
   constructor(private readonly ele: ElementRef, private readonly geocodeService: GeocoderService) {
     this.#featureCollection = new Collection<Feature>([]);
@@ -35,7 +34,7 @@ export class GeocodeComponent implements ControlComponent, OnInit, AfterViewInit
 
   locate(address: string) {
     this.#featureCollection.clear();
-    this.geocodeService.geocode(this.adapter, address)?.subscribe(features =>
+    this.geocodeService.geocode(address)?.subscribe(features =>
       features.forEach(feature => this.#featureCollection.push(feature))
     );
   }
