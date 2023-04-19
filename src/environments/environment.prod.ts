@@ -10,6 +10,9 @@ export const environment = {
   },
   geocoder: 'nasumilu',
   services: {
+    issues: {
+      feature: "https://nasuilu.io/services/issue-trac/issues/search/findAllWithinBbox"
+    },
     geocode: 'https://nasumilu.io/services',
     account: 'https://nasumilu.io/auth/token',
   }

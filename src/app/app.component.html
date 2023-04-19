@@ -2,6 +2,7 @@
   <layers class="ol-overlaycontainer">
     <tile-layer osm></tile-layer>
     <vector-layer [layerStyle]="'geolocation'" [currentPosition]="map" [currentPositionZoom]="10" geolocation></vector-layer>
+    <vector-layer #issueTrac [layerStyle]="'geolocation'" issue-trac-source></vector-layer>
   </layers>
   <overlays class="ol-overlay-component">
     <popup-overlay id="popup" positioning="center-center"></popup-overlay>
