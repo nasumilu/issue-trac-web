@@ -14,6 +14,9 @@ export const environment = {
   },
   geocoder: 'nasumilu',
   services: {
+    issues: {
+      feature: "http://localhost:8080/services/issue-trac/issues/search/findAllWithinBbox"
+    },
     // geocode: 'https://nasumilu.io/services',
     geocode: 'https://localhost:8000/services',
     account: 'https://nasumilu.io/auth/token',
