@@ -17,16 +17,13 @@ export class IssueTracFeature extends JSONFeature {
   }
 
   protected override readFeatureFromObject(object: Issue, options: ReadOptions): Feature {
-    console.log('IssueTracFeature.readFeatureFromObject', object);
     return new Feature({
       geometry: new Point(transform(object.shape.coordinates, 'EPSG:4269', 'EPSG:3857')),
-      title: object.title,
-      description: object.description
+      link: object._links['self']
     });
   }
 
   protected override readFeaturesFromObject(object: IssueResponse | Issue, options: ReadOptions): Feature[] {
-    console.log('IssueTracFeature.readFeaturesFromObject', object);
 
     if (isIssue(object)) {
       return [this.readFeatureFromObject(object, options)];
@@ -35,7 +32,6 @@ export class IssueTracFeature extends JSONFeature {
   }
 
   protected override readProjectionFromObject(object: any): Projection {
-    console.log('IssueTracFeature.readProjectionFromObject', object, PROJECTIONS[0]);
     return PROJECTIONS[0];
   }
 

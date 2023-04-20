@@ -1,3 +1,4 @@
 {
-  "geolocation": { "circle-radius": 5, "circle-stroke-width": 2, "circle-stroke-color": [51, 102, 153], "circle-fill-color": [51, 102, 153, 0.5] }
+  "geolocation": {"icon-src": "/assets/images/geo-alt-fill.svg", "icon-color":  "red", "icon-anchor":  [0.5, 1]},
+  "issue": { "icon-color": "#336699", "icon-src": "/assets/images/geo-alt-fill.svg", "icon-anchor": [0.5, 1] }
 }
