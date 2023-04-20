@@ -6,7 +6,8 @@ export const environment = {
   map: {
     center: [-11209356.066861978, 4764718.121160403],
     zoom: 5,
-    projection: 'EPSG:3857'
+    projection: 'EPSG:3857',
+    extent: [-14885586.074855622, 1817049.417419917,-6454471.852344695, 7340067.293938433]
   },
   geocoder: 'nasumilu',
   services: {

@@ -31,7 +31,8 @@ export class WebmapComponent extends Map implements AfterContentInit, AfterViewI
       view: new View({
         center: environment.map.center,
         zoom: environment.map.zoom,
-        projection: environment.map.projection
+        projection: environment.map.projection,
+        extent: environment.map?.extent ?? undefined
       })
     });
   }

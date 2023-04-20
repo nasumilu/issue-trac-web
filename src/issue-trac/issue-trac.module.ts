@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IssueTracDirective } from './issue-trac.directive';
+import { IssueComponent } from './issue/issue.component';
 
 
 
 @NgModule({
   declarations: [
-    IssueTracDirective
+    IssueTracDirective,
+    IssueComponent
   ],
   exports: [
     IssueTracDirective

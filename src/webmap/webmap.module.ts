@@ -11,6 +11,7 @@ import { LayersDirective } from './layers/layers.directive';
 import { OverlaysDirective } from './overlays/overlays.directive';
 import { ControlsDirective } from './controls/controls.directive';
 import {WebmapComponent} from "./webmap/webmap.component";
+import { HoverInteractionDirective } from './interaction/hover-interaction.directive';
 
 @NgModule({
   providers: [],
@@ -25,6 +26,7 @@ import {WebmapComponent} from "./webmap/webmap.component";
     LayersDirective,
     OverlaysDirective,
     ControlsDirective,
+    HoverInteractionDirective,
   ],
   exports: [
     WebmapComponent,
@@ -37,6 +39,7 @@ import {WebmapComponent} from "./webmap/webmap.component";
     LayersDirective,
     OverlaysDirective,
     ControlsDirective,
+    HoverInteractionDirective,
   ],
   imports: [
     CommonModule,

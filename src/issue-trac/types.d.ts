@@ -10,7 +10,8 @@ export type Issue = {
     },
     subject: string,
     geoid: string,
-    disposition: 'NEW' | 'RECEIVED' | 'REVIEWING' | 'ASSIGNED' | 'COMPLETED' | 'CLOSED'
+    disposition: 'NEW' | 'RECEIVED' | 'REVIEWING' | 'ASSIGNED' | 'COMPLETED' | 'CLOSED',
+    _links: Links
 };
 
 export type Links = { [rel: string]: { href: string } };

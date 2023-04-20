@@ -15,7 +15,7 @@ export class LayerStyleService {
     this.#layerStyles$ = client.get<LayerStyles>('assets/layer-styles.json');
   }
 
-  getStyle$(name: string): Observable<FlatStyleLike|undefined> {
+  getStyle$(name: string): Observable<FlatStyleLike | undefined> {
     return this.#layerStyles$.pipe(
       map<LayerStyles, FlatStyleLike>(styles => styles[name] ?? undefined)
     );
